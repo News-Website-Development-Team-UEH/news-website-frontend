@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Article</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
+      }
+
+      .brand,
+      .header a {
+        font-weight: 700;
+        font-size: 40px;
+        color: #f24b1a;
+        text-decoration: none;
+      }
+
+      .category input {
+        display: none;
+      }
+
+      .category span {
+        display: inline-block;
+        padding: 8px 16px;
+        border: 1px solid #f24b1a;
+        border-radius: 999px;
+        color: #f24b1a;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .category input:checked + span {
+        background-color: #f24b1a;
+        color: #fff;
+      }
+
+      .upload-preview {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #333;
+        background: repeating-conic-gradient(#ddd 0% 25%, transparent 0% 50%)
+          50% / 20px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .upload-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: none;
+      }
+
+      .form-note {
+        font-size: 12px;
+        color: #aaa;
+      }
+
+      .social-icon {
+        background-color: #f24b1a;
+      }
+
+      .btn-upload {
+        border-color: #f24b1a;
+      }
+
+      .btn__back:hover,
+      .btn-upload:hover {
+        background-color: #f24b1a;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header
+      class="header d-flex align-items-center justify-content-between px-4 bg-black border-bottom border-dark"
+      style="height: 80px"
+    >
+      <button
+        class="btn__back btn btn-outline-danger rounded-3 px-4 py-2"
+        onclick="history.back()"
+      >
+        Trở lại
+      </button>
+
+      <a
+        href="index.html"
+        class="brand position-absolute start-50 translate-middle-x text-decoration-none"
+        >.TheGRID</a
+      >
+
+      <button
+        class="btn__create--story btn btn-dark text-secondary rounded-3 px-4 py-2"
+        disabled
+      >
+        Tạo bài báo +
+      </button>
+    </header>
+
+    <!-- Content -->
+    <div class="container-fluid py-5">
+      <div class="container__content mx-auto" style="max-width: 700px">
+        <h2 class="page-title text-center mb-4 fw-bold text-warning">
+          Tạo bài viết mới
+        </h2>
+        <!-- Tiêu đề -->
+        <div class="form-group mb-4">
+          <label for="title" class="form-label fw-semibold"
+            >Tiêu đề bài viết</label
+          >
+          <input
+            type="text"
+            id="title"
+            maxlength="160"
+            class="form-control bg-dark text-white border-secondary"
+            placeholder="Nhập tiêu đề bài viết"
+          />
+          <span class="form-note mt-1 d-block">Tối đa 160 ký tự</span>
+        </div>
+
+        <!-- Mô tả -->
+        <div class="form-group mb-4">
+          <label for="desc" class="form-label fw-semibold">Mô tả</label>
+          <textarea
+            id="desc"
+            maxlength="400"
+            class="form-control bg-dark text-white border-secondary"
+            rows="4"
+            placeholder="Thêm nội dung mô tả cho bài viết"
+          ></textarea>
+          <span class="form-note mt-1 d-block">Tối đa 400 ký tự</span>
+        </div>
+
+        <!-- Chủ đề -->
+        <div class="form-group mb-4">
+          <label class="form-label fw-semibold">Chọn chủ đề của bài viết</label>
+          <div id="categories" class="d-flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Ảnh bìa -->
+        <div
+          class="upload-cover d-flex flex-column flex-md-row align-items-start justify-content-between gap-4 mb-4"
+        >
+          <div class="upload-info flex-grow-1">
+            <h5>Thêm ảnh bìa</h5>
+            <p class="note text-secondary small">
+              Định dạng: PNG, JPEG, PDF. Kích thước tối đa 100 MB
+            </p>
+            <label class="btn-upload btn rounded-pill text-white">
+              📤 Chọn tệp
+              <input
+                type="file"
+                id="coverInput"
+                accept="image/png,image/jpeg,application/pdf"
+                hidden
+              />
+            </label>
+          </div>
+
+          <div class="upload-preview">
+            <img id="coverPreview" alt="Xem trước" />
+          </div>
+        </div>
+
+        <div class="form-group mb-4">
+          <label for="coverUrl" class="form-label fw-semibold"
+            >Hoặc dán link ảnh bên ngoài (URL):</label
+          >
+          <input
+            type="text"
+            id="coverUrl"
+            class="form-control"
+            placeholder="https://example.com/image.jpg"
+            style="background-color: #333; color: #fff"
+          />
+          <small class="text-secondary"
+            >Bạn có thể nhập URL ảnh từ web nếu không muốn tải ảnh lên.</small
+          >
+        </div>
+
+        <style>
+          #coverUrl::placeholder {
+            color: white;
+            opacity: 0.8;
+          }
+        </style>
+
+        <!-- Nội dung -->
+        <div class="form-group mb-4">
+          <label for="content" class="form-label fw-semibold">Nội dung</label>
+          <textarea
+            id="content"
+            class="form-control bg-dark text-white border-secondary"
+            rows="8"
+            placeholder="Nhập nội dung chi tiết của bài viết"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="footer bg-black text-secondary border-top border-dark py-5 mt-5"
+    >
+      <div class="footer-container container text-center">
+        <div class="footer-logo text-white fs-3 fw-bold mb-4">.TheGRID</div>
+
+        <div class="footer-content d-flex flex-column align-items-center gap-3">
+          <div
+            class="footer-links d-flex flex-wrap justify-content-center gap-3"
+          >
+            <a href="#" class="text-secondary text-decoration-none">Liên hệ</a>
+            <a href="#" class="text-secondary text-decoration-none">Góp ý</a>
+            <a href="#" class="text-secondary text-decoration-none"
+              >Quy tắc cộng đồng</a
+            >
+            <a href="#" class="text-secondary text-decoration-none"
+              >Giới thiệu</a
+            >
+          </div>
+
+          <div class="footer-social d-flex gap-3">
+            <a href="#" class="social-icon btn rounded-circle p-2 text-white"
+              >@</a
+            >
+            <a href="#" class="social-icon btn rounded-circle p-2 text-white"
+              >f</a
+            >
+            <a href="#" class="social-icon btn rounded-circle p-2 text-white"
+              >in</a
+            >
+            <a href="#" class="social-icon btn rounded-circle p-2 text-white"
+              >→</a
+            >
+          </div>
+        </div>
+
+        <div class="footer-copyright text-muted small mt-4">© 2025 TheGRID</div>
+      </div>
+    </footer>
+
+    <script src="./config.js"></script>
+    <script src="create.article.js"></script>
+  </body>
+</html>

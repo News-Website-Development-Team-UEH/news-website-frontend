@@ -1,0 +1,1 @@
+window.API_BASE = "https://news-website-backend-x9sl.onrender.com";
