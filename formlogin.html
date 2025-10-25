@@ -1,278 +1,294 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TheGRID - Đăng nhập</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheGRID - Đăng nhập</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
 
-	<!-- Bootstrap 5 -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/formlogin.css" />
+  </head>
+  <body class="text-white d-flex flex-column min-vh-100">
+    <main
+      class="container container-auth d-flex flex-column align-items-center justify-content-center py-5"
+    >
+      <div class="w-100" style="max-width: 400px">
+        <div class="logo text-center mb-5">
+          <a class="navbar-brand" href="index.html"> <span>.</span>TheGRID </a>
+        </div>
 
-	<style>
-:root {
-  --primary-color: #ff4500;
-  --secondary-text-color: #999;
-  --dark-bg: #0f0f0f;
-  --dark-card-bg: #1a1a1a;
-  --border-color: #333;
-  --light-text: #fff;
-  --gray-text: #666;
-}
-		body{background:#0f0f0f;}
-		.logo{font-size:32px;font-weight:700;letter-spacing:-0.5px}
-		.logo .the{color:#ff4500}
-		.logo .grid{color:#fff}
-		.form-title{font-weight:400;line-height:1.3;color:#fff;}
-		.form-subtitle{color:#999999;}
-		.divider{position:relative;margin:1.25rem 0;text-align:center}
-		.divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:rgba(255,255,255,0.1)}
-		.divider .divider-text{background:#0f0f0f;padding:0 .75rem;color:#666666;font-size:.75rem;text-transform:uppercase;letter-spacing:1px}
-		/* Footer */
-.footer {
-  background: #000;
-  padding: 40px 0 20px;
-  border-top: 1px solid #333;
-}
-.footer-container { max-width: 1200px; margin: auto; padding: 0 20px; }
-.footer-logo { font-size: 32px; font-weight: 700; margin-bottom: 30px; }
-.footer-content { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
-.footer-links { display: flex; flex-direction: column; gap: 15px; }
-.footer-links-row { display: flex; gap: 30px; flex-wrap: wrap; }
-.footer-links a { color: #ccc; font-size: 14px; transition: color 0.3s;text-decoration: none; }
-.footer-links a:hover { color: #fff; }
-.footer-social { display: flex; gap: 15px; }
-.social-icon {
-  width: 40px; height: 40px;
-  background: var(--primary-color);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 18px;
-  transition: background 0.3s;
-  text-decoration: none;
-}
-.social-icon:hover { background: #e63e00; }
-.footer-copyright {
-  color: #666; font-size: 12px; text-align: center;
-  border-top: 1px solid #333; padding-top: 20px;
-}
+        <div id="message" class="alert d-none" role="alert"></div>
 
-		/* Form controls styling */
-		.form-control, .form-control:focus{
-			background:#1a1a1a;
-			border-color:#333333;
-			color:#ffffff;
-			border-width: 1px;
-			border-radius: 4px;
-		}
-		.form-control:focus{
-			border-color:#ff4500;
-			box-shadow: 0 0 0 0.2rem rgba(255, 69, 0, 0.25);
-		}
-		.form-control::placeholder{color:#666666}
-		.form-label{color:#cccccc;font-size:0.9rem;}
-		
-		/* Button styling */
-		.btn-primary {
-			background-color: #ff4500;
-			border-color: #ff4500;
-			color: #ffffff;
-			font-weight: 600;
-			text-transform: uppercase;
-			letter-spacing: 0.5px;
-		}
-		.btn-primary:hover, .btn-primary:focus {
-			background-color: #e63e00;
-			border-color: #e63e00;
-		}
-		
-		.btn-outline-primary {
-			color: #ff4500;
-			border-color: #ff4500;
-			background-color: transparent;
-		}
-		.btn-outline-primary:hover, .btn-outline-primary:focus {
-			background-color: #ff4500;
-			border-color: #ff4500;
-			color: #ffffff;
-		}
-		
-		/* Footer styling */
-		.footer {
-			background: #0f0f0f;
-			border-top: 1px solid #333333;
-		}
-		
-		/* Fix bottom footer spacing for small screens */
-		@media (max-width:480px){
-			.container-auth{padding:20px 15px}
-			.logo{font-size:28px}
-		}
-		
-		/* Alert styling */
-		.alert-danger {
-			background-color: rgba(220, 53, 69, 0.1);
-			border-color: #dc3545;
-			color: #f5c6cb;
-		}
-		.alert-success {
-			background-color: rgba(40, 167, 69, 0.1);
-			border-color: #28a745;
-			color: #d4edda;
-		}
-		/* Responsive */
-@media (max-width: 768px) {
-  .footer-content { flex-direction: column; gap: 20px; }
-}
-	</style>
-</head>
-<body class="text-white d-flex flex-column min-vh-100">
-	<main class="container container-auth d-flex flex-column align-items-center justify-content-center py-5">
-		<div class="w-100" style="max-width:400px;">
-			<div class="logo text-center mb-5">
-				<a class="navbar-brand" href="index.html">
-                <span>.</span>TheGRID
-                </a>
-			</div>
+        <!-- Auth Tabs -->
+        <div class="d-flex justify-content-center mb-4">
+          <button
+            type="button"
+            class="btn btn-link text-decoration-none me-3"
+            id="loginTab"
+            style="color: #ff4500; font-weight: 700"
+          >
+            ĐĂNG NHẬP
+          </button>
+          <button
+            type="button"
+            class="btn btn-link text-decoration-none"
+            id="registerTab"
+            style="color: #999"
+          >
+            ĐĂNG KÝ
+          </button>
+        </div>
 
-			<div id="message" class="alert d-none" role="alert"></div>
+        <!-- Login Form -->
+        <form id="loginForm" novalidate class="text-center">
+          <h1 class="form-title h2 mb-4">Chào mừng trở lại</h1>
 
-			<!-- Auth Tabs -->
-			<div class="d-flex justify-content-center mb-4">
-				<button type="button" class="btn btn-link text-decoration-none me-3" id="loginTab" style="color:#ff4500; font-weight:700;">ĐĂNG NHẬP</button>
-				<button type="button" class="btn btn-link text-decoration-none" id="registerTab" style="color:#999;">ĐĂNG KÝ</button>
-			</div>
+          <div class="mb-3 text-start">
+            <label for="loginUsername" class="form-label">Tên đăng nhập</label>
+            <input
+              type="text"
+              id="loginUsername"
+              name="username"
+              class="form-control"
+              required
+              autocomplete="username"
+              placeholder="your_username"
+            />
+          </div>
 
-			<!-- Login Form -->
-			<form id="loginForm" novalidate class="text-center">
-				<h1 class="form-title h2 mb-4">Chào mừng trở lại</h1>
+          <div class="mb-4 text-start">
+            <label for="loginPassword" class="form-label">Mật khẩu</label>
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              class="form-control"
+              required
+              minlength="6"
+              autocomplete="current-password"
+              placeholder="••••••••"
+            />
+          </div>
 
-				<div class="mb-3 text-start">
-					<label for="loginUsername" class="form-label">Tên đăng nhập</label>
-					<input type="text" id="loginUsername" name="username" class="form-control" required autocomplete="username" placeholder="your_username">
-				</div>
+          <button
+            type="submit"
+            class="btn btn-primary w-100 rounded-pill py-3"
+            id="loginBtn"
+          >
+            Đăng nhập
+          </button>
 
-				<div class="mb-4 text-start">
-					<label for="loginPassword" class="form-label">Mật khẩu</label>
-					<input type="password" id="loginPassword" name="password" class="form-control" required minlength="6" autocomplete="current-password" placeholder="••••••••">
-				</div>
+          <div class="text-center mt-3">
+            <a
+              href="#"
+              id="forgotPasswordLink"
+              class="text-decoration-none"
+              style="color: #ff4500; font-size: 14px"
+              >Quên mật khẩu?</a
+            >
+          </div>
+        </form>
 
-				<button type="submit" class="btn btn-primary w-100 rounded-pill py-3" id="loginBtn">
-					Đăng nhập
-				</button>
+        <!-- Forgot Password Form -->
+        <form
+          id="forgotForm"
+          novalidate
+          class="text-center"
+          style="display: none"
+        >
+          <h1 class="form-title h2 mb-4">Khôi phục mật khẩu</h1>
+          <p
+            class="form-subtitle small mx-auto mb-4"
+            style="max-width: 320px; color: #999"
+          >
+            Nhập email của bạn, chúng tôi sẽ gửi liên kết để đặt lại mật khẩu.
+          </p>
 
-				<div class="text-center mt-3">
-					<a href="#" id="forgotPasswordLink" class="text-decoration-none" style="color:#ff4500; font-size:14px;">Quên mật khẩu?</a>
-				</div>
-			</form>
+          <div class="mb-4 text-start">
+            <label for="forgotEmail" class="form-label">Email</label>
+            <input
+              type="email"
+              id="forgotEmail"
+              name="email"
+              class="form-control"
+              required
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+          </div>
 
-			<!-- Forgot Password Form -->
-			<form id="forgotForm" novalidate class="text-center" style="display:none;">
-				<h1 class="form-title h2 mb-4">Khôi phục mật khẩu</h1>
-				<p class="form-subtitle small mx-auto mb-4" style="max-width:320px; color:#999;">
-					Nhập email của bạn, chúng tôi sẽ gửi liên kết để đặt lại mật khẩu.
-				</p>
+          <button
+            type="submit"
+            class="btn btn-primary w-100 rounded-pill py-3 mb-3"
+            id="resetBtn"
+          >
+            Gửi liên kết khôi phục
+          </button>
 
-				<div class="mb-4 text-start">
-					<label for="forgotEmail" class="form-label">Email</label>
-					<input type="email" id="forgotEmail" name="email" class="form-control" required autocomplete="email" placeholder="you@example.com">
-				</div>
+          <div class="text-center">
+            <a
+              href="#"
+              id="backToLoginLink"
+              class="text-decoration-none"
+              style="color: #999; font-size: 14px"
+              >Trở về đăng nhập</a
+            >
+          </div>
+        </form>
 
-				<button type="submit" class="btn btn-primary w-100 rounded-pill py-3 mb-3" id="resetBtn">
-					Gửi liên kết khôi phục
-				</button>
+        <!-- Register Form -->
+        <form
+          id="registerForm"
+          novalidate
+          class="text-center"
+          style="display: none"
+        >
+          <h1 class="form-title h2 mb-4">Tạo tài khoản mới</h1>
 
-				<div class="text-center">
-					<a href="#" id="backToLoginLink" class="text-decoration-none" style="color:#999; font-size:14px;">Trở về đăng nhập</a>
-				</div>
-			</form>
+          <div class="mb-3 text-start">
+            <label for="regUsername" class="form-label">Tên đăng nhập</label>
+            <input
+              type="text"
+              id="regUsername"
+              name="username"
+              class="form-control"
+              required
+              autocomplete="username"
+              placeholder="your_username"
+            />
+          </div>
 
-			<!-- Register Form -->
-			<form id="registerForm" novalidate class="text-center" style="display:none;">
-				<h1 class="form-title h2 mb-4">Tạo tài khoản mới</h1>
+          <div class="mb-3 text-start">
+            <label for="regEmail" class="form-label">Email</label>
+            <input
+              type="email"
+              id="regEmail"
+              name="email"
+              class="form-control"
+              required
+              autocomplete="email"
+              placeholder="you@example.com"
+            />
+          </div>
 
-				<div class="mb-3 text-start">
-					<label for="regUsername" class="form-label">Tên đăng nhập</label>
-					<input type="text" id="regUsername" name="username" class="form-control" required autocomplete="username" placeholder="your_username">
-				</div>
+          <div class="mb-3 text-start">
+            <label for="regFullName" class="form-label">Họ và tên</label>
+            <input
+              type="text"
+              id="regFullName"
+              name="fullName"
+              class="form-control"
+              required
+              placeholder="Nguyễn Văn A"
+            />
+          </div>
 
-				<div class="mb-3 text-start">
-					<label for="regEmail" class="form-label">Email</label>
-					<input type="email" id="regEmail" name="email" class="form-control" required autocomplete="email" placeholder="you@example.com">
-				</div>
+          <div class="mb-4 text-start">
+            <label for="regPassword" class="form-label">Mật khẩu</label>
+            <input
+              type="password"
+              id="regPassword"
+              name="password"
+              class="form-control"
+              required
+              minlength="6"
+              autocomplete="new-password"
+              placeholder="••••••••"
+            />
+          </div>
 
-				<div class="mb-3 text-start">
-					<label for="regFullName" class="form-label">Họ và tên</label>
-					<input type="text" id="regFullName" name="fullName" class="form-control" required placeholder="Nguyễn Văn A">
-				</div>
+          <button
+            type="submit"
+            class="btn btn-primary w-100 rounded-pill py-3"
+            id="registerBtn"
+          >
+            Đăng ký
+          </button>
+        </form>
 
-				<div class="mb-4 text-start">
-					<label for="regPassword" class="form-label">Mật khẩu</label>
-					<input type="password" id="regPassword" name="password" class="form-control" required minlength="6" autocomplete="new-password" placeholder="••••••••">
-				</div>
+        <div class="divider">
+          <span class="divider-text">hoặc</span>
+        </div>
 
-				<button type="submit" class="btn btn-primary w-100 rounded-pill py-3" id="registerBtn">
-					Đăng ký
-				</button>
-			</form>
-
-			<div class="divider">
-				<span class="divider-text">hoặc</span>
-			</div>
-
-			<div class="d-grid gap-2 mt-3">
-				<button type="button" class="btn btn-outline-primary d-flex align-items-center justify-content-center gap-2 py-2" id="googleBtn">
-					<svg class="social-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-						<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-						<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-						<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-						<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-					</svg>
-					Đăng nhập với Google
-				</button>
-			</div>
-		</div>
-	</main>
-		<!-- Footer -->
-	<footer class="footer">
-		<div class="footer-container">
-			<div class="footer-logo">.TheGRID</div>
-			<div class="footer-content">
-				<div class="footer-links">
-					<div class="footer-links-row">
-						<a href="#">Liên hệ</a>
-						<a href="#">Góp ý</a>
-						<a href="#">Quy tắc cộng đồng</a>
-						<a href="#">Giới thiệu</a>
-						<a href="#">Tuyên bố đạo đức</a>
-						<a href="#">Cách chúng tôi đánh giá sản phẩm</a>
-					</div>
-					<div class="footer-links-row">
-						<a href="#">Cài đặt Cookie</a>
-						<a href="#">Điều khoản sử dụng</a>
-						<a href="#">Chính sách bảo mật</a>
-						<a href="#">Chính sách Cookie</a>
-						<a href="#">Câu hỏi về bản quyền</a>
-						<a href="#">Khả năng tiếp cận</a>
-						<a href="#">Trạng thái hệ thống</a>
-					</div>
-				</div>
-				<div class="footer-social">
-					<a href="#" class="social-icon">@</a>
-					<a href="#" class="social-icon">f</a>
-					<a href="#" class="social-icon">in</a>
-					<a href="#" class="social-icon">→</a>
-				</div>
-			</div>
-			<div class="footer-copyright">2025 TheGRID</div>
-		</div>
-	</footer>
-	<!-- Google API -->
-	<script src="./config.js"></script>
-	<script src="https://apis.google.com/js/api.js"></script>
-	
-	<!-- Bootstrap JS (for potential future components) -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-	<script src="login.js"></script>
-	
-</body>
+        <div class="d-grid gap-2 mt-3">
+          <button
+            type="button"
+            class="btn btn-outline-primary d-flex align-items-center justify-content-center gap-2 py-2"
+            id="googleBtn"
+          >
+            <svg
+              class="social-icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              />
+              <path
+                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              />
+              <path
+                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              />
+              <path
+                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              />
+            </svg>
+            Đăng nhập với Google
+          </button>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">.TheGRID</div>
+        <div class="footer-content">
+          <div class="footer-links">
+            <div class="footer-links-row">
+              <a href="#">Liên hệ</a>
+              <a href="#">Góp ý</a>
+              <a href="#">Quy tắc cộng đồng</a>
+              <a href="#">Giới thiệu</a>
+              <a href="#">Tuyên bố đạo đức</a>
+              <a href="#">Cách chúng tôi đánh giá sản phẩm</a>
+            </div>
+            <div class="footer-links-row">
+              <a href="#">Cài đặt Cookie</a>
+              <a href="#">Điều khoản sử dụng</a>
+              <a href="#">Chính sách bảo mật</a>
+              <a href="#">Chính sách Cookie</a>
+              <a href="#">Câu hỏi về bản quyền</a>
+              <a href="#">Khả năng tiếp cận</a>
+              <a href="#">Trạng thái hệ thống</a>
+            </div>
+          </div>
+          <div class="footer-social">
+            <a href="#" class="social-icon">@</a>
+            <a href="#" class="social-icon">f</a>
+            <a href="#" class="social-icon">in</a>
+            <a href="#" class="social-icon">→</a>
+          </div>
+        </div>
+        <div class="footer-copyright">2025 TheGRID</div>
+      </div>
+    </footer>
+    <!-- Google API -->
+    <script src="js/config.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/login.js"></script>
+  </body>
 </html>

@@ -1,5 +1,3 @@
-// const API_BASE = "http://localhost:3000";
-
 /* -------------------- Render Categories -------------------- */
 function renderCategories(categories) {
     const container = document.getElementById("categoriesList");

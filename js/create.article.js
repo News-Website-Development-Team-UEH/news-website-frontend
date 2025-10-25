@@ -1,5 +1,3 @@
-// const API_BASE = "http://localhost:3000";
-
 /* -------------------- Helper lấy role từ token -------------------- */
 function getRoleFromToken() {
   const token = localStorage.getItem("token");
@@ -100,7 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const coverPreview = document.getElementById("coverPreview");
 
   const urlParams = new URLSearchParams(window.location.search);
-  const editId = urlParams.get("edit"); // 👉 nếu có thì đang ở chế độ chỉnh sửa
+  const editId = urlParams.get("edit");
   const token = localStorage.getItem("token");
   const role = getRoleFromToken();
 
@@ -131,7 +129,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (!res.ok) throw new Error("Không thể tải bài viết để chỉnh sửa");
       const article = await res.json();
 
-      // ✅ Gán dữ liệu vào form
+      // Gán dữ liệu vào form
       titleInput.value = article.title || "";
       descInput.value = article.description || "";
       contentInput.value = article.content || "";
@@ -140,7 +138,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         coverPreview.style.display = "block";
       }
 
-      // ✅ Đánh dấu danh mục chính và phụ
+      // Đánh dấu danh mục chính và phụ
       setTimeout(() => {
         document.querySelectorAll("input[name='categories']").forEach((cb) => {
           const id = parseInt(cb.value, 10);
@@ -212,16 +210,16 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (res.ok) {
         alert(
           editId
-            ? "✅ Cập nhật bài viết thành công!"
-            : "✅ Tạo bài viết thành công!"
+            ? "Cập nhật bài viết thành công!"
+            : "Tạo bài viết thành công!"
         );
         window.location.href = "authorinfo.html";
       } else {
-        console.error("❌ Lỗi server:", result);
+        console.error("Lỗi server:", result);
         alert(result.message || "Không thể lưu bài viết!");
       }
     } catch (err) {
-      console.error("❌ Lỗi kết nối:", err);
+      console.error("Lỗi kết nối:", err);
       alert("Không kết nối được server.");
     }
   });

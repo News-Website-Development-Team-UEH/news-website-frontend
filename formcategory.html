@@ -1,437 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>TheGRID - AI Research</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheGRID - AI Research</title>
 
-	<!-- Bootstrap 5 -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-	<style>
-:root {
-  --primary-color: #ff4500;
-  --secondary-text-color: #999;
-  --dark-bg: #0f0f0f;
-  --dark-card-bg: #1a1a1a;
-  --border-color: #333;
-  --light-text: #fff;
-  --gray-text: #666;
-}
-
-body {background: #000000;color: #ffffff;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;margin: 0;padding: 0;padding-top: 80px; /* Thêm khoảng trống bằng chiều cao header */
-}
-
-/* Header styling - Orange gradient covering AI Research */
-.header {
-background: #0f0f0f;
-border-bottom: 1px solid #333333; position: fixed;  /* Cố định header */top: 0 ;  /* Căn lên đầu */left: 0;width: 100% ; /* Chiếm toàn bộ chiều ngang */z-index: 1000;/* Đặt trên các phần tử khác */padding:20px;}
-.header-nav {display: flex;justify-content: space-between;align-items: center;padding: 0 40px;}
-.logo { font-size: 24px; font-weight: bold; letter-spacing: -0.5px; }
-.logo .the { color: #ffffff; }
-.logo .grid { color: #ff4500; }
-.nav-center {display: flex;gap: 30px;align-items: center;}
-.nav-center a {color: #ffffff;text-decoration: none;font-size: 14px;font-weight: 500;transition: opacity 0.3s;}
-.nav-center a:hover {opacity: 0.8;}
-.nav-right {display: flex;gap: 15px;align-items: center;}
-/* Nút search + signin */
-.search-btn, .signin-btn {
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  line-height: 1;
-  transition: 0.2s;
-  border: 1px solid var(--primary-color);
-}
-.search-btn { background: transparent; color: var(--primary-color); text-decoration: none; }
-.signin-btn { background: var(--primary-color); color: #fff; text-decoration: none; }
-.search-btn:hover { background: var(--primary-color); color: #fff; }
-.signin-btn:hover { background: #e63d00; }
-
-/* Hero section with AI Research title */
-.hero-section {background: linear-gradient(135deg, #ff6b47 0%, #ff8a65 100%);padding: 30px 0 40px 0;}
-.hero-container {max-width: 1200px;margin: 0 auto;padding: 0 40px;}
-.hero-title {font-size: 72px;font-weight: 700;color: #ffffff;margin: 0;text-shadow: 0 2px 4px rgba(0,0,0,0.1);text-align: left;}
-
-/* Topic section - Black background with Follow button */
-.topic-section {background: #000000;padding: 40px 0;}
-.follow-btn {background: #ff4500;color: #ffffff;border: none;padding: 10px 24px;border-radius: 20px;font-weight: 600;font-size: 14px;margin-bottom: 20px;cursor: pointer;transition: background 0.3s;}
-.follow-btn:hover {background: #e63e00;}
-.topic-description {color: #cccccc;font-size: 16px;line-height: 1.6;max-width: 800px;}
-/* --- style cho nút menu (menuToggle) để giống nút tròn --- */
-.menu-btn, #menuToggle {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  background: transparent;
-  font-size: 20px;
-  display: none;            /* mặc định ẩn, hiện qua media query */
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  line-height: 1;
-  cursor: pointer;
-}
-#menuToggle:hover {
-  background: var(--primary-color);
-  color: #fff; /* đổi icon trắng khi hover */
-}
-.mobile-menu {
-  position: absolute;
-  top: 60px; /* chỉnh cho khớp với header */
-  left: 0;
-  width: 100%;
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 1000;
-  background-color: #e63d00;
-  border-top: 1px solid #e63d00;
-  padding: 15px;
-}
-.mobile-menu.active {
-  display: flex !important;
-}
-
-/* style cho link trong mobile menu (block để dễ bấm) */
-.mobile-menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  display: block;
-  padding: 8px 0;
-}
-.mobile-menu a:hover { color: var(--primary-color); }
-/* Main content */
-.main-content {background: #000000;padding: 40px 0;}
-.content-container {max-width: 1200px;margin: 0 auto;padding: 0 20px;}
-
-/* Two large featured articles at top */
-.featured-articles-row {display: grid;grid-template-columns: 1fr 1fr;gap: 30px;margin-bottom: 40px;}
-.featured-article-large {background: #1a1a1a;border-radius: 8px;overflow: hidden;}
-.featured-content {padding: 20px;}
-.featured-title-large {font-size: 20px;font-weight: 700;color: #ffffff;margin-bottom: 10px;line-height: 1.3;}
-.featured-meta {font-size: 12px;color: #ff4500;margin-bottom: 8px;font-weight: 600;}
-.featured-excerpt {color: #cccccc;font-size: 14px;line-height: 1.5;}
-
-/* Main layout with content and sidebar */
-.main-layout {display: grid;grid-template-columns: 2fr 1fr;gap: 40px;}
-
-/* Three small articles */
-.small-articles-section {margin-bottom: 40px;}
-.small-article {display: flex;align-items: flex-start;padding: 15px 0;border-bottom: 1px solid #333333;}
-.small-article:last-child {border-bottom: none;}
-.small-article-content {flex: 1;}
-.small-article-meta {font-size: 12px;color: #ff4500;font-weight: 600;margin-bottom: 5px;}
-.small-article-title {font-size: 16px;font-weight: 600;color: #ffffff;line-height: 1.3;}
-/* Large featured article in middle */
-.large-featured-section {margin-bottom: 40px;}
-.large-featured-title {font-size: 28px;font-weight: 700;color: #ffffff;margin-bottom: 10px;line-height: 1.3;}
-
-/* Two final small articles */
-.final-articles-section {margin-bottom: 40px;}
-
-/* Sidebar */
-.sidebar {background: #2d5a4a;border-radius: 8px;padding: 20px;height: fit-content;}
-.sidebar-title {font-size: 18px;font-weight: 700;color: #ffffff;margin-bottom: 20px;}
-.popular-item {display: flex;align-items: flex-start;margin-bottom: 15px;padding-bottom: 15px;border-bottom: 1px solid rgba(255, 255, 255, 0.1);}
-.popular-item:last-child {border-bottom: none;margin-bottom: 0;padding-bottom: 0;}
-.popular-number {background: #ff4500;color: #ffffff;width: 20px;height: 20px;border-radius: 50%;display: flex;align-items: center;justify-content: center;font-size: 12px;font-weight: 700;margin-right: 12px;flex-shrink: 0;}
-.popular-content {flex: 1;}
-.popular-title {font-size: 14px;color: #ffffff;font-weight: 600;line-height: 1.3;margin-bottom: 5px;}
-.popular-meta {font-size: 12px;color: #cccccc;}
-
-/* ==================== IMAGE STYLES (MỚI) ==================== */
-
-/* Ảnh featured lớn */
-.featured-image-large {width: 100%;height: 200px;border-radius: 8px;overflow: hidden;}
-.featured-image-large img {width: 100%;height: 100%;object-fit: cover;display: block;}
-
-/* Ảnh bài viết nhỏ */
-.small-article-image {width: 80px;height: 60px;border-radius: 4px;overflow: hidden;margin-left: 15px;flex-shrink: 0;}
-.small-article-image img {width: 100%;height: 100%;object-fit: cover;display: block;}
-
-/* Ảnh featured lớn ở giữa */
-.large-featured-image {width: 100%;height: 300px;border-radius: 8px;overflow: hidden;margin-bottom: 15px;}
-.large-featured-image img {width: 100%;height: 100%;object-fit: cover;display: block;}
-
-/* Ảnh trong sidebar Popular */
-.popular-image {width: 60px;height: 45px;border-radius: 4px;overflow: hidden;margin-left: 10px;flex-shrink: 0;}
-.popular-image img {width: 100%;height: 100%;object-fit: cover;display: block;}
-
-/* Footer */
-.footer {background: #000000;padding: 40px 0 20px 0;border-top: 1px solid #333333;}
-.footer-container {max-width: 1200px;margin: 0 auto;padding: 0 20px;}
-.footer-logo {font-size: 32px;font-weight: 700;color: #ffffff;margin-bottom: 30px;}
-.footer-content {display: flex;justify-content: space-between;align-items: flex-start;margin-bottom: 30px;}
-.footer-links {display: flex;flex-direction: column;gap: 15px;}
-.footer-links-row {display: flex;gap: 30px;}
-.footer-links a {color: #cccccc;text-decoration: none;font-size: 14px;transition: color 0.3s;}
-.footer-links a:hover {color: #ffffff;}
-.footer-social {display: flex;gap: 15px;}
-.social-icon {width: 40px;height: 40px;background: #ff4500;border-radius: 50%;display: flex;align-items: center;justify-content: center;color: #ffffff;text-decoration: none;font-size: 18px;transition: background 0.3s;}
-.social-icon:hover {background: #e63e00;color: #ffffff;}
-.footer-copyright {color: #666666;font-size: 12px;text-align: center;border-top: 1px solid #333333;padding-top: 20px;}
-
-/* Responsive */
-@media (max-width: 768px) {
-.hero-title {font-size: 48px;}
-.nav-center {display: none;}
-.featured-articles-row {grid-template-columns: 1fr;}
-.main-layout {grid-template-columns: 1fr;}
-.footer-content {flex-direction: column;gap: 20px;}
-.footer-links-row {flex-wrap: wrap;}
-}
-/* hiển thị nút menu & điều chỉnh layout cho màn nhỏ */
-@media (max-width: 992px) {
-  #categoriesList { display: none !important; }   /* ẩn danh mục trên header */            
-  .search-btn {                                   /* giữ nút tìm dạng tròn */
-    padding: 0;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    border: 2px solid #ff4500;
-    background: transparent;
-    color: #ff4500;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .search-btn span { display: none; }
-
-  /* tránh bị chồng lấn: đặt nút đăng nhập cách ra 1 chút */
-  #authArea .signin-btn {
-    margin-left: 8px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 86px;
-    padding: 6px 14px;
-  }
-
-  /* đảm bảo header con hiển thị ngang */
-  .header .d-flex.flex-column { flex-direction: row !important; }
-  .header .d-flex.justify-content-between { justify-content: space-between !important; }
-}
-	</style>
-</head>
-<body>
-	<header class="header">
-    	<div class="container-fluid py-0.5 px-1">
-		<div class="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
-    	<!-- Logo -->
-    		<a class="logo navbar-brand d-flex align-items-center" href="index.html">
-        		<span class="the">.</span><span class="grid">TheGRID</span>
-   			 </a>
-            <!--  Categories động -->
-            <nav id="categoriesList" class="d-flex gap-4 flex-wrap justify-content-center"></nav>
-            <!-- Nút search + login -->
-            <div class="d-flex align-items-center gap-2">
-                <a href="formsearch.html" class="search-btn">🔍<span>Tìm</span></a>
-                <button id="menuToggle" class="btn btn-outline-primary d-md-none rounded-circle d-flex align-items-center justify-content-center p-0" style="width:46px; height:46px;">
-                <i class="bi bi-list fa fa-bars fs-4"></i>
-                </button>
-                <div id="authArea"></div>
-            </div>
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/formcategory.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container-fluid py-0.5 px-1">
+        <div
+          class="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3"
+        >
+          <!-- Logo -->
+          <a
+            class="logo navbar-brand d-flex align-items-center"
+            href="index.html"
+          >
+            <span class="the">.</span><span class="grid">TheGRID</span>
+          </a>
+          <!--  Categories động -->
+          <nav
+            id="categoriesList"
+            class="d-flex gap-4 flex-wrap justify-content-center"
+          ></nav>
+          <!-- Nút search + login -->
+          <div class="d-flex align-items-center gap-2">
+            <a href="formsearch.html" class="search-btn">🔍<span>Tìm</span></a>
+            <button
+              id="menuToggle"
+              class="btn btn-outline-primary d-md-none rounded-circle d-flex align-items-center justify-content-center p-0"
+              style="width: 46px; height: 46px"
+            >
+              <i class="bi bi-list fa fa-bars fs-4"></i>
+            </button>
+            <div id="authArea"></div>
+          </div>
         </div>
-    </div>
-	</header>
-	<div id="mobileMenu" class="mobile-menu bg-dark text-light p-3 "></div>
+      </div>
+    </header>
+    <div id="mobileMenu" class="mobile-menu bg-dark text-light p-3"></div>
 
-	<!-- Hero Section -->
-	<section class="hero-section">
-		<div class="hero-container">
-			<h1 class="hero-title"></h1>
-		</div>
-	</section>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <h1 class="hero-title"></h1>
+      </div>
+    </section>
 
-	<!-- Topic Section -->
-	<section class="topic-section">
-		<div class="content-container">
-			<button id="btnFollowCategory"></button>
-			<p class="topic-description"></p>
-		</div>
-	</section>
+    <!-- Topic Section -->
+    <section class="topic-section">
+      <div class="content-container">
+        <button id="btnFollowCategory"></button>
+        <p class="topic-description"></p>
+      </div>
+    </section>
 
-<!-- Main Content -->
-<main class="main-content">
-	<div class="content-container">
-		<!-- Two large featured articles at top -->
-		<section class="featured-articles-row">
-			<article class="featured-article-large">
-				<img class="featured-image-large" src="" alt="Featured image">
-				<div class="featured-content">
-					<div class="featured-meta"></div>
-					<h3 class="featured-title-large"></h3>
-					<p class="featured-excerpt"></p>
-				</div>
-			</article>
-			<article class="featured-article-large">
-				<img class="featured-image-large" src="" alt="Featured image">
-				<div class="featured-content">
-					<div class="featured-meta"></div>
-					<h3 class="featured-title-large"></h3>
-					<p class="featured-excerpt"></p>
-				</div>
-			</article>
-		</section>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="content-container">
+        <!-- Two large featured articles at top -->
+        <section class="featured-articles-row">
+          <article class="featured-article-large">
+            <img class="featured-image-large" src="" alt="Featured image" />
+            <div class="featured-content">
+              <div class="featured-meta"></div>
+              <h3 class="featured-title-large"></h3>
+              <p class="featured-excerpt"></p>
+            </div>
+          </article>
+          <article class="featured-article-large">
+            <img class="featured-image-large" src="" alt="Featured image" />
+            <div class="featured-content">
+              <div class="featured-meta"></div>
+              <h3 class="featured-title-large"></h3>
+              <p class="featured-excerpt"></p>
+            </div>
+          </article>
+        </section>
 
-		<!-- Main layout with content and sidebar -->
-		<div class="main-layout">
-			<!-- Left content column -->
-			<div class="main-articles">
-				<!-- Three small articles -->
-				<section class="small-articles-section">
-					<article class="small-article">
-						<div class="small-article-content">
-							<div class="small-article-meta"></div>
-							<h3 class="small-article-title"></h3>
-						</div>
-						<img class="small-article-image" src="" alt="Small article image">
-					</article>
-					<article class="small-article">
-						<div class="small-article-content">
-							<div class="small-article-meta"></div>
-							<h3 class="small-article-title"></h3>
-						</div>
-						<img class="small-article-image" src="" alt="Small article image">
-					</article>
-					<article class="small-article">
-						<div class="small-article-content">
-							<div class="small-article-meta"></div>
-							<h3 class="small-article-title"></h3>
-						</div>
-						<img class="small-article-image" src="" alt="Small article image">
-					</article>
-				</section>
+        <!-- Main layout with content and sidebar -->
+        <div class="main-layout">
+          <!-- Left content column -->
+          <div class="main-articles">
+            <!-- Three small articles -->
+            <section class="small-articles-section">
+              <article class="small-article">
+                <div class="small-article-content">
+                  <div class="small-article-meta"></div>
+                  <h3 class="small-article-title"></h3>
+                </div>
+                <img
+                  class="small-article-image"
+                  src=""
+                  alt="Small article image"
+                />
+              </article>
+              <article class="small-article">
+                <div class="small-article-content">
+                  <div class="small-article-meta"></div>
+                  <h3 class="small-article-title"></h3>
+                </div>
+                <img
+                  class="small-article-image"
+                  src=""
+                  alt="Small article image"
+                />
+              </article>
+              <article class="small-article">
+                <div class="small-article-content">
+                  <div class="small-article-meta"></div>
+                  <h3 class="small-article-title"></h3>
+                </div>
+                <img
+                  class="small-article-image"
+                  src=""
+                  alt="Small article image"
+                />
+              </article>
+            </section>
 
-				<!-- Large featured article in middle -->
-				<section class="large-featured-section">
-					<article class="large-featured">
-						<img class="large-featured-image" src="" alt="Large featured image">
-						<div class="featured-meta"></div>
-						<h2 class="large-featured-title"></h2>
-						<p class="featured-excerpt"></p>
-					</article>
-				</section>
+            <!-- Large featured article in middle -->
+            <section class="large-featured-section">
+              <article class="large-featured">
+                <img
+                  class="large-featured-image"
+                  src=""
+                  alt="Large featured image"
+                />
+                <div class="featured-meta"></div>
+                <h2 class="large-featured-title"></h2>
+                <p class="featured-excerpt"></p>
+              </article>
+            </section>
 
-				<!-- Two final small articles -->
-				<section class="final-articles-section">
-					<article class="small-article">
-						<div class="small-article-content">
-							<div class="small-article-meta"></div>
-							<h3 class="small-article-title"></h3>
-						</div>
-						<img class="small-article-image" src="" alt="Small article image">
-					</article>
-					<article class="small-article">
-						<div class="small-article-content">
-							<div class="small-article-meta"></div>
-							<h3 class="small-article-title"></h3>
-						</div>
-						<img class="small-article-image" src="" alt="Small article image">
-					</article>
-				</section>
-			</div>
+            <!-- Two final small articles -->
+            <section class="final-articles-section">
+              <article class="small-article">
+                <div class="small-article-content">
+                  <div class="small-article-meta"></div>
+                  <h3 class="small-article-title"></h3>
+                </div>
+                <img
+                  class="small-article-image"
+                  src=""
+                  alt="Small article image"
+                />
+              </article>
+              <article class="small-article">
+                <div class="small-article-content">
+                  <div class="small-article-meta"></div>
+                  <h3 class="small-article-title"></h3>
+                </div>
+                <img
+                  class="small-article-image"
+                  src=""
+                  alt="Small article image"
+                />
+              </article>
+            </section>
+          </div>
 
-			<!-- Sidebar -->
-			<aside class="sidebar">
-				<h3 class="sidebar-title">Các bài nổi bật</h3>
-				
-				<article class="popular-item">
-					<div class="popular-number"></div>
-					<div class="popular-content">
-						<h4 class="popular-title"></h4>
-						<div class="popular-meta"></div>
-					</div>
-					<img class="popular-image" src="" alt="Popular article image">
-				</article>
-				
-				<article class="popular-item">
-					<div class="popular-number"></div>
-					<div class="popular-content">
-						<h4 class="popular-title"></h4>
-						<div class="popular-meta"></div>
-					</div>
-					<img class="popular-image" src="" alt="Popular article image">
-				</article>
-				
-				<article class="popular-item">
-					<div class="popular-number"></div>
-					<div class="popular-content">
-						<h4 class="popular-title"></h4>
-						<div class="popular-meta"></div>
-					</div>
-					<img class="popular-image" src="" alt="Popular article image">
-				</article>
-				
-				<article class="popular-item">
-					<div class="popular-number"></div>
-					<div class="popular-content">
-						<h4 class="popular-title"></h4>
-						<div class="popular-meta"></div>
-					</div>
-					<img class="popular-image" src="" alt="Popular article image">
-				</article>
-				
-				<article class="popular-item">
-					<div class="popular-number"></div>
-					<div class="popular-content">
-						<h4 class="popular-title"></h4>
-						<div class="popular-meta"></div>
-					</div>
-					<img class="popular-image" src="" alt="Popular article image">
-				</article>
-			</aside>
-		</div>
-	</div>
-</main>
-	<!-- Footer -->
-	<footer class="footer">
-		<div class="footer-container">
-			<div class="footer-logo">.TheGRID</div>
-			<div class="footer-content">
-				<div class="footer-links">
-					<div class="footer-links-row">
-						<a href="#">Liên hệ</a>
-						<a href="#">Góp ý</a>
-						<a href="#">Quy tắc cộng đồng</a>
-						<a href="#">Giới thiệu</a>
-						<a href="#">Tuyên bố đạo đức</a>
-						<a href="#">Cách chúng tôi đánh giá sản phẩm</a>
-					</div>
-					<div class="footer-links-row">
-						<a href="#">Cài đặt Cookie</a>
-						<a href="#">Điều khoản sử dụng</a>
-						<a href="#">Chính sách bảo mật</a>
-						<a href="#">Chính sách Cookie</a>
-						<a href="#">Câu hỏi về bản quyền</a>
-						<a href="#">Khả năng tiếp cận</a>
-						<a href="#">Trạng thái hệ thống</a>
-					</div>
-				</div>
-				<div class="footer-social">
-					<a href="#" class="social-icon">@</a>
-					<a href="#" class="social-icon">f</a>
-					<a href="#" class="social-icon">in</a>
-					<a href="#" class="social-icon">→</a>
-				</div>
-			</div>
-			<div class="footer-copyright">2025 TheGRID</div>
-		</div>
-	</footer>
-	<!-- Bootstrap JS -->
-	 <script src="./config.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-		<!-- ✅ JS MVC -->
- <script src="category.js"></script>
- <script src="auth.js" ></script>
-</body>
+          <!-- Sidebar -->
+          <aside class="sidebar">
+            <h3 class="sidebar-title">Các bài nổi bật</h3>
+
+            <article class="popular-item">
+              <div class="popular-number"></div>
+              <div class="popular-content">
+                <h4 class="popular-title"></h4>
+                <div class="popular-meta"></div>
+              </div>
+              <img class="popular-image" src="" alt="Popular article image" />
+            </article>
+
+            <article class="popular-item">
+              <div class="popular-number"></div>
+              <div class="popular-content">
+                <h4 class="popular-title"></h4>
+                <div class="popular-meta"></div>
+              </div>
+              <img class="popular-image" src="" alt="Popular article image" />
+            </article>
+
+            <article class="popular-item">
+              <div class="popular-number"></div>
+              <div class="popular-content">
+                <h4 class="popular-title"></h4>
+                <div class="popular-meta"></div>
+              </div>
+              <img class="popular-image" src="" alt="Popular article image" />
+            </article>
+
+            <article class="popular-item">
+              <div class="popular-number"></div>
+              <div class="popular-content">
+                <h4 class="popular-title"></h4>
+                <div class="popular-meta"></div>
+              </div>
+              <img class="popular-image" src="" alt="Popular article image" />
+            </article>
+
+            <article class="popular-item">
+              <div class="popular-number"></div>
+              <div class="popular-content">
+                <h4 class="popular-title"></h4>
+                <div class="popular-meta"></div>
+              </div>
+              <img class="popular-image" src="" alt="Popular article image" />
+            </article>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-logo">.TheGRID</div>
+        <div class="footer-content">
+          <div class="footer-links">
+            <div class="footer-links-row">
+              <a href="#">Liên hệ</a>
+              <a href="#">Góp ý</a>
+              <a href="#">Quy tắc cộng đồng</a>
+              <a href="#">Giới thiệu</a>
+              <a href="#">Tuyên bố đạo đức</a>
+              <a href="#">Cách chúng tôi đánh giá sản phẩm</a>
+            </div>
+            <div class="footer-links-row">
+              <a href="#">Cài đặt Cookie</a>
+              <a href="#">Điều khoản sử dụng</a>
+              <a href="#">Chính sách bảo mật</a>
+              <a href="#">Chính sách Cookie</a>
+              <a href="#">Câu hỏi về bản quyền</a>
+              <a href="#">Khả năng tiếp cận</a>
+              <a href="#">Trạng thái hệ thống</a>
+            </div>
+          </div>
+          <div class="footer-social">
+            <a href="#" class="social-icon">@</a>
+            <a href="#" class="social-icon">f</a>
+            <a href="#" class="social-icon">in</a>
+            <a href="#" class="social-icon">→</a>
+          </div>
+        </div>
+        <div class="footer-copyright">2025 TheGRID</div>
+      </div>
+    </footer>
+    <script src="js/config.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/category.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
 </html>

@@ -1,5 +1,3 @@
-// const API_BASE = "http://localhost:3000";
-
 /* -------------------- Helper -------------------- */
 function authHeader() {
   const token = localStorage.getItem("token");
@@ -51,11 +49,10 @@ function renderTopCommented(list) {
 }
 
 function renderRandomArticles(list) {
-  const container = document.getElementById("article-list"); // Đây là container nhận bài viết Random
+  const container = document.getElementById("article-list");
   if (!container) return;
   container.innerHTML = "";
 
-  // FIX: Giới hạn chỉ hiển thị 3 bài viết đầu tiên từ danh sách nhận được từ backend
   const limitedList = list.slice(0, 3);
 
   limitedList.forEach((a) => {
@@ -218,7 +215,7 @@ async function loadAllCategoriesWithFollowState() {
 
       btn.onclick = async () => {
         const tokenNow = localStorage.getItem("token");
-        // Yêu cầu 1: Kiểm tra đăng nhập trước khi follow
+        // Kiểm tra đăng nhập trước khi follow
         if (!tokenNow) {
           // Thay alert bằng modal/message box tuỳ chỉnh nếu có, hiện tại dùng alert
           alert("Vui lòng đăng nhập để theo dõi chủ đề!");

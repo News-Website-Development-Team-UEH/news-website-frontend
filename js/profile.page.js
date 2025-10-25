@@ -24,8 +24,6 @@ class ProfilePage {
   }
 
   async checkAndUpdateUserRole() {
-    // Không cần gọi API, chỉ sử dụng thông tin từ localStorage
-    // Role được cập nhật từ server khi đăng nhập
     return;
   }
 
@@ -67,7 +65,7 @@ class ProfilePage {
             switch (authorRequest.status) {
               case "pending":
                 subscriptionLink.style.display = "block";
-                subscriptionLink.textContent = "⏳ Đơn đăng ký đang chờ duyệt";
+                subscriptionLink.textContent = "Đơn đăng ký đang chờ duyệt";
                 subscriptionLink.href = "#subscription";
                 subscriptionLink.onclick = (e) => {
                   e.preventDefault();
@@ -77,7 +75,7 @@ class ProfilePage {
 
               case "rejected":
                 subscriptionLink.style.display = "block";
-                subscriptionLink.textContent = "❌ Đăng ký lại tác giả";
+                subscriptionLink.textContent = "Đăng ký lại tác giả";
                 subscriptionLink.href = "#subscription";
                 subscriptionLink.onclick = (e) => {
                   e.preventDefault();
@@ -87,7 +85,7 @@ class ProfilePage {
 
               case "approved":
                 subscriptionLink.style.display = "block";
-                subscriptionLink.textContent = "✅ Đăng ký đã được duyệt";
+                subscriptionLink.textContent = "Đăng ký đã được duyệt";
                 subscriptionLink.href = "authorprofile.html";
                 subscriptionLink.onclick = null;
                 break;

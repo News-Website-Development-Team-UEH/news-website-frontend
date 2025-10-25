@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoriesNav = document.querySelector(".categories__nav");
   const profilesContainer = document.querySelector(".profiles-container");
   const accountsContainer = document.querySelector(".acounts-container");
-  const categoriesContainer = document.querySelector(".categories-container"); // ✅ thêm dòng này
+  const categoriesContainer = document.querySelector(".categories-container");
 
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {

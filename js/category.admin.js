@@ -105,7 +105,7 @@ function attachArticleActions() {
   // Sửa bài
   editBtns.forEach((btn) => {
     btn.addEventListener("click", async (e) => {
-      e.stopPropagation(); // ⛔ Không lan ra ngoài
+      e.stopPropagation(); // Không lan ra ngoài
       const id = btn.dataset.id;
       const newTitle = prompt("Nhập tiêu đề mới cho bài viết:");
       if (!newTitle) return;
@@ -116,7 +116,7 @@ function attachArticleActions() {
   // Xóa bài
   deleteBtns.forEach((btn) => {
     btn.addEventListener("click", async (e) => {
-      e.stopPropagation(); // ⛔ Không lan ra ngoài
+      e.stopPropagation(); // Không lan ra ngoài
       const id = btn.dataset.id;
       if (confirm("Bạn có chắc muốn xóa bài viết này?")) {
         await deleteArticle(id);
@@ -124,7 +124,7 @@ function attachArticleActions() {
     });
   });
 
-  // 👉 Click vào bài để xem chi tiết
+  // Click vào bài để xem chi tiết
   articleItems.forEach((article) => {
     article.addEventListener("click", (e) => {
       // Ngăn khi click vào nút bên trong

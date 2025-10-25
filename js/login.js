@@ -1,5 +1,3 @@
-// const API_BASE = "http://localhost:3000"; // Backend API
-
 /* -------------------- Helper -------------------- */
 async function fetchJson(url, opts = {}) {
   const res = await fetch(url, opts);
@@ -108,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("load", () => {
     const handled = handleGoogleCallbackResult();
     if (handled) {
-      console.log("✅ Đã xử lý Google login callback");
+      console.log("Đã xử lý Google login callback");
     }
   });
 

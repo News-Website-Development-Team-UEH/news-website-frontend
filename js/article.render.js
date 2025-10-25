@@ -1,5 +1,3 @@
-// const API_BASE = "http://localhost:3000";
-
 /* -------------------- Helper -------------------- */
 const q = (id) => document.getElementById(id);
 const fmtDate = (d) =>
@@ -31,7 +29,7 @@ function renderArticle(a) {
   if (q("author_id")) q("author_id").textContent = a.author_name || "Unknown";
   if (q("created_at")) q("created_at").textContent = fmtDate(a.created_at);
 
-  // ✅ Format nội dung xuống dòng
+  // Format nội dung xuống dòng
   if (q("content"))
     q("content").innerHTML = a.content
       ? a.content

@@ -1,0 +1,1 @@
+window.API_BASE = "https://news-website-deploy-iykm.onrender.com";

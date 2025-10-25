@@ -1,6 +1,6 @@
 class AuthorApplicationHandler {
   constructor() {
-    this.API_BASE = "http://localhost:3000";
+    // this.API_BASE = "https://news-website-deploy-iykm.onrender.com";
     this.form = document.getElementById("authorApplicationForm");
     this.statusBox = document.getElementById("authorRequestStatus");
     this.uploadBtn = document.getElementById("uploadAvatarBtn");
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
 class AuthorInfoHandler {
   constructor(userService) {
     this.userService = userService;
-    this.API_BASE = "http://localhost:3000";
+    // this.API_BASE = "https://news-website-deploy-iykm.onrender.com";
     this.currentPage = 1;
     this.articlesPerPage = 10;
   }
@@ -226,14 +226,14 @@ class AuthorInfoHandler {
       if (loadingEl) loadingEl.style.display = "none";
 
       if (articles.length > 0) {
-        // ✅ Có bài viết → hiển thị danh sách
+        // Có bài viết → hiển thị danh sách
         if (noArticlesEl) noArticlesEl.style.display = "none";
         if (articlesListEl) {
           articlesListEl.style.display = "block";
           this.displayArticlesList(articles);
         }
       } else {
-        // ✅ Không có bài viết → hiển thị trạng thái trống
+        // Không có bài viết → hiển thị trạng thái trống
         if (articlesListEl) articlesListEl.style.display = "none";
         if (noArticlesEl) {
           noArticlesEl.innerHTML = `
@@ -384,11 +384,11 @@ class AuthorInfoHandler {
           } else {
             const err = await response.json();
             console.error("Lỗi xóa:", err);
-            alert("❌ Không thể xóa bài viết. Vui lòng thử lại!");
+            alert("Không thể xóa bài viết. Vui lòng thử lại!");
           }
         } catch (error) {
           console.error("Lỗi khi gửi yêu cầu xóa:", error);
-          alert("⚠️ Có lỗi khi kết nối đến server!");
+          alert("Có lỗi khi kết nối đến server!");
         }
       });
     });
@@ -425,11 +425,11 @@ class AuthorInfoHandler {
             return;
           }
 
-          alert("✅ Cập nhật bài viết thành công!");
-          this.loadAuthorArticles(); // Reload danh sách sau khi cập nhật
+          alert("Cập nhật bài viết thành công!");
+          this.loadAuthorArticles(); 
         } catch (error) {
           console.error("Lỗi khi cập nhật:", error);
-          alert("⚠️ Có lỗi khi kết nối đến server!");
+          alert("Có lỗi khi kết nối đến server!");
         }
       });
     });

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const mobileMenu = document.getElementById("mobileMenu");
   const categoriesList = document.getElementById("categoriesList");
-  if (!authArea) return; // nếu trang nào không có thì bỏ qua
+  if (!authArea) return;
 
   function renderAuth() {
     const token = localStorage.getItem("token");
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       authArea.innerHTML = `<a href="formprofile.html" class="signin-btn">Tài khoản</a>`;
     }
   }
-    // --- Menu toggle cho mobile ---
+  // --- Menu toggle cho mobile ---
   if (menuToggle && mobileMenu && categoriesList) {
     menuToggle.addEventListener("click", (e) => {
       e.stopPropagation();

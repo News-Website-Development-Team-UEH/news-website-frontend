@@ -1,5 +1,3 @@
-// const API_BASE = "http://localhost:3000";
-
 /* -------------------- Hiển thị kết quả tìm kiếm -------------------- */
 function renderSearchResults(articles, keyword) {
     const searchResultsContainer = document.getElementById("searchResults");
@@ -135,11 +133,11 @@ async function initSearchPage() {
 
 /* -------------------- Xử lý form tìm kiếm & khởi tạo -------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
-    // 1. Lấy danh mục và hiển thị lên header
+    // Lấy danh mục và hiển thị lên header
     const categories = await fetchCategories();
     new CategoryRenderer().renderCategories(categories);
 
-    // 2. Ngăn form gửi khi không nhập gì
+    // Ngăn form gửi khi không nhập gì
     const searchForm = document.getElementById("searchForm");
     const searchInput = document.getElementById("searchInput");
 
@@ -154,6 +152,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // 3. Khởi tạo trang tìm kiếm khi tải
+    // Khởi tạo trang tìm kiếm khi tải
     initSearchPage();
 });

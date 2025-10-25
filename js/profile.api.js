@@ -1,5 +1,3 @@
-const API_BASE = "http://localhost:3000";
-
 function handleLogout() {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
