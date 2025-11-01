@@ -2,7 +2,7 @@ console.log("📂 category.manage.admin.js loaded");
 
 document.addEventListener("DOMContentLoaded", () => {
   const token = localStorage.getItem("token");
-  // const API = window.API_BASE || "https://news-website-backend-05b8.onrender.com";
+  const API = window.API_BASE || "https://news-website-deploy-iykm.onrender.com";
   const tableBody = document.getElementById("categoryTableBody");
   const addBtn = document.getElementById("addCategoryBtn");
 
