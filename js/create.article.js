@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             ? "Cập nhật bài viết thành công!"
             : "Tạo bài viết thành công!"
         );
-        window.location.href = "authorinfo.html";
+        window.location.href = "index.html";
       } else {
         console.error("Lỗi server:", result);
         alert(result.message || "Không thể lưu bài viết!");

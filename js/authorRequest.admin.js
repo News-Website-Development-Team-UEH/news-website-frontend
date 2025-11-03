@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // const API_BASE = window.API_BASE || "https://news-website-deploy-iykm.onrender.com";
+  const API_BASE = window.API_BASE || "https://news-website-deploy-iykm.onrender.com";
   const token = localStorage.getItem("token");
   const profilesContainer = document.querySelector(".profiles-container");
   const profilesRow = profilesContainer.querySelector(".row");

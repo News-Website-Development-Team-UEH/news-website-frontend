@@ -1,6 +1,6 @@
 class AuthorApplicationHandler {
   constructor() {
-    // this.API_BASE = "https://news-website-deploy-iykm.onrender.com";
+    this.API_BASE = "https://news-website-deploy-iykm.onrender.com";
     this.form = document.getElementById("authorApplicationForm");
     this.statusBox = document.getElementById("authorRequestStatus");
     this.uploadBtn = document.getElementById("uploadAvatarBtn");
@@ -137,15 +137,10 @@ class AuthorApplicationHandler {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const handler = new AuthorApplicationHandler();
-  handler.init();
-});
-
 class AuthorInfoHandler {
   constructor(userService) {
     this.userService = userService;
-    // this.API_BASE = "https://news-website-deploy-iykm.onrender.com";
+    this.API_BASE = "https://news-website-deploy-iykm.onrender.com";
     this.currentPage = 1;
     this.articlesPerPage = 10;
   }
@@ -339,7 +334,7 @@ class AuthorInfoHandler {
         )
           return;
         const articleId = item.dataset.id;
-        window.location.href = `articledetail.html?id=${articleId}`;
+        window.location.href = `formarticle.html?id=${articleId}`;
       });
     });
 

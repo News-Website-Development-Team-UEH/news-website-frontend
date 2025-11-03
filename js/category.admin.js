@@ -130,7 +130,7 @@ function attachArticleActions() {
       // Ngăn khi click vào nút bên trong
       if (e.target.closest(".edit-btn") || e.target.closest(".delete-btn")) return;
       const articleId = article.dataset.id;
-      window.location.href = `articledetail.html?id=${articleId}`;
+      window.location.href = `formarticle.html?id=${articleId}`;
     });
   });
 }
